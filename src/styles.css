@@ -49,7 +49,7 @@
   --secondary: oklch(0.84 0.04 178);
   --secondary-foreground: oklch(0.24 0.028 195);
   --muted: oklch(0.935 0.014 182);
-  --muted-foreground: oklch(0.48 0.022 195);
+  --muted-foreground: oklch(0.42 0.022 195);
   --accent: oklch(0.72 0.088 176);
   --accent-foreground: oklch(0.21 0.03 195);
   --accent-strong: oklch(0.5 0.078 178);
@@ -95,7 +95,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 /* ── botões ────────────────────────────────────────────────────────────── */
 .button { display: inline-flex; min-height: 3.25rem; align-items: center; justify-content: center; gap: .6rem; border: 1px solid transparent; border-radius: var(--radius-md); padding: .8rem 1.25rem; text-decoration: none; text-transform: uppercase; font-size: .72rem; line-height: 1; font-weight: 800; transition: transform .2s ease, background-color .2s ease, color .2s ease; cursor: pointer; }
 .button:hover { transform: translateY(-2px); }
-.button-small { min-height: 2.7rem; padding: .65rem 1rem; font-size: .66rem; }
+.button-small { min-height: 2.78rem; padding: .68rem 1rem; font-size: .66rem; }
 .button-whatsapp { color: var(--whatsapp-foreground); background: var(--whatsapp); }
 .button-whatsapp:hover { background: color-mix(in oklab, var(--whatsapp) 86%, var(--foreground)); }
 .button-primary { color: var(--primary-foreground); background: var(--primary); }
