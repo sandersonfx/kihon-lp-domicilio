@@ -1,0 +1,201 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 3px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 5px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-strong: var(--accent-strong);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-soft: var(--soft);
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --color-hero-muted: var(--hero-muted);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --font-sans: "Montserrat", sans-serif;
+  --font-display: "Sora", sans-serif;
+}
+
+/* Paleta do Kihon Care: fundo quente-neutro (mantém o vínculo com a marca
+   do salão) com acento verde-água, que lê como saúde/cuidado em vez de
+   beleza. Nunca roxo: é a cor que mais parece "genérico de IA". */
+:root {
+  --radius: 0.35rem;
+  --background: oklch(0.98 0.008 180);
+  --foreground: oklch(0.24 0.028 195);
+  --card: oklch(0.995 0.004 180);
+  --card-foreground: oklch(0.24 0.028 195);
+  --primary: oklch(0.24 0.028 195);
+  --primary-foreground: oklch(0.98 0.008 180);
+  --secondary: oklch(0.84 0.04 178);
+  --secondary-foreground: oklch(0.24 0.028 195);
+  --muted: oklch(0.935 0.014 182);
+  --muted-foreground: oklch(0.48 0.022 195);
+  --accent: oklch(0.72 0.088 176);
+  --accent-foreground: oklch(0.21 0.03 195);
+  --accent-strong: oklch(0.5 0.078 178);
+  --border: oklch(0.84 0.019 182);
+  --input: oklch(0.78 0.02 182);
+  --ring: oklch(0.5 0.078 178);
+  --soft: oklch(0.915 0.024 180);
+  --hero: oklch(0.21 0.03 197);
+  --hero-foreground: oklch(0.985 0.005 180);
+  --hero-muted: oklch(0.9 0.016 185);
+  --whatsapp: oklch(0.53 0.178 145);
+  --whatsapp-foreground: oklch(0.99 0.005 145);
+}
+
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans); letter-spacing: 0; }
+button, a, input, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+/* ── marca ─────────────────────────────────────────────────────────────── */
+.brand-mark { color: var(--hero-foreground); font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; letter-spacing: -.01em; }
+.brand-tag { color: var(--accent); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .18em; }
+.brand-footer { color: var(--hero-foreground); font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; }
+.brand-footer em { color: var(--accent); font-style: normal; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .18em; vertical-align: middle; margin-left: .35rem; }
+
+/* ── hero ──────────────────────────────────────────────────────────────── */
+.hero-section { position: relative; overflow: hidden; background: var(--hero); }
+.hero-section::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 78% 18%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 42%); opacity: .9; }
+.hero-glow { position: absolute; inset: auto 0 0; height: 14rem; background: linear-gradient(to top, var(--hero), transparent); z-index: 4; pointer-events: none; }
+.hero-grid { position: relative; z-index: 5; }
+
+.hero-panel { position: relative; z-index: 10; padding: 2rem; border: 1px solid color-mix(in oklab, var(--hero-foreground) 16%, transparent); border-radius: var(--radius-lg); background: color-mix(in oklab, var(--hero-foreground) 5%, transparent); backdrop-filter: blur(6px); }
+.hero-panel-list { display: grid; gap: .95rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.hero-panel-list li { display: flex; align-items: flex-start; gap: .7rem; color: var(--hero-foreground); font-size: .9rem; line-height: 1.55; }
+
+.nav-link { color: inherit; text-decoration: none; transition: color .2s ease; }
+.nav-link:hover { color: var(--accent); }
+.icon-button { position: relative; z-index: 50; display: inline-flex; height: 2.75rem; width: 2.75rem; align-items: center; justify-content: center; border: 1px solid color-mix(in oklab, var(--hero-foreground) 24%, transparent); border-radius: 999px; background: color-mix(in oklab, var(--hero) 70%, transparent); color: var(--hero-foreground); }
+.mobile-menu { position: absolute; top: .75rem; left: .75rem; right: .75rem; padding: 6rem 1.5rem 1.5rem; background: color-mix(in oklab, var(--hero) 96%, transparent); border: 1px solid color-mix(in oklab, var(--hero-foreground) 12%, transparent); box-shadow: 0 24px 60px color-mix(in oklab, var(--hero) 60%, transparent); backdrop-filter: blur(18px); }
+.mobile-menu > a:not(.button) { display: block; padding: .9rem 0; color: var(--hero-foreground); border-bottom: 1px solid color-mix(in oklab, var(--hero-foreground) 12%, transparent); text-decoration: none; font-weight: 600; }
+
+/* ── botões ────────────────────────────────────────────────────────────── */
+.button { display: inline-flex; min-height: 3.25rem; align-items: center; justify-content: center; gap: .6rem; border: 1px solid transparent; border-radius: var(--radius-md); padding: .8rem 1.25rem; text-decoration: none; text-transform: uppercase; font-size: .72rem; line-height: 1; font-weight: 800; transition: transform .2s ease, background-color .2s ease, color .2s ease; cursor: pointer; }
+.button:hover { transform: translateY(-2px); }
+.button-small { min-height: 2.7rem; padding: .65rem 1rem; font-size: .66rem; }
+.button-whatsapp { color: var(--whatsapp-foreground); background: var(--whatsapp); }
+.button-whatsapp:hover { background: color-mix(in oklab, var(--whatsapp) 86%, var(--foreground)); }
+.button-primary { color: var(--primary-foreground); background: var(--primary); }
+.button-outline { color: var(--foreground); border-color: var(--border); background: transparent; }
+.button-light { color: var(--hero); background: var(--hero-foreground); }
+.button-outline-light { color: var(--hero-foreground); border-color: color-mix(in oklab, var(--hero-foreground) 30%, transparent); background: transparent; }
+.button-outline-light:hover { background: color-mix(in oklab, var(--hero-foreground) 10%, transparent); }
+
+/* ── blocos ────────────────────────────────────────────────────────────── */
+.eyebrow { display: inline-flex; align-items: center; gap: .5rem; color: var(--accent-strong); text-transform: uppercase; font-size: .68rem; font-weight: 800; }
+.eyebrow-light { color: var(--accent); }
+.section-shell { padding: 7rem 0; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 3rem; margin-bottom: 3.5rem; }
+.section-heading h2, .location-section h2, .booking-intro h2 { margin: .65rem 0 0; font-family: var(--font-display); font-size: clamp(2.15rem, 4.6vw, 4rem); line-height: 1.04; font-weight: 500; }
+.section-heading > p { max-width: 30rem; margin: 0; color: var(--muted-foreground); line-height: 1.8; }
+.bg-soft { background: var(--soft); }
+
+/* ── cards de ícone (sinais + confiança) ───────────────────────────────── */
+.reasons-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.icon-card { padding: 1.75rem 1.5rem; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--card); }
+.icon-card-badge { display: inline-flex; height: 2.85rem; width: 2.85rem; align-items: center; justify-content: center; border-radius: var(--radius-md); background: color-mix(in oklab, var(--accent) 22%, transparent); color: var(--accent-strong); }
+.icon-card h3 { margin: 1.15rem 0 0; font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+.icon-card p { margin: .45rem 0 0; color: var(--muted-foreground); font-size: .82rem; line-height: 1.7; }
+
+/* ── serviços ──────────────────────────────────────────────────────────── */
+.services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.service-card { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 19rem; padding: 1.75rem 1.5rem; border-radius: var(--radius-lg); background: var(--primary); color: var(--primary-foreground); }
+.service-card.icon-service { padding-top: 4.5rem; }
+.service-card.icon-service .icon-card-badge { position: absolute; top: 1.5rem; left: 1.5rem; background: color-mix(in oklab, var(--accent) 26%, transparent); color: var(--accent); }
+.service-number { position: absolute; top: 1.6rem; right: 1.5rem; color: color-mix(in oklab, var(--hero-foreground) 55%, transparent); font-size: .7rem; font-weight: 700; }
+.service-copy h3 { margin: 0; font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; }
+.service-copy p { margin: .5rem 0 0; color: color-mix(in oklab, var(--hero-foreground) 78%, transparent); font-size: .82rem; line-height: 1.65; }
+
+/* ── como funciona ─────────────────────────────────────────────────────── */
+.hours-section { background: var(--hero); color: var(--hero-foreground); }
+.hours-section h2 { margin: .65rem 0 0; font-family: var(--font-display); font-size: clamp(2.15rem, 4.6vw, 4rem); line-height: 1.04; font-weight: 500; }
+.steps-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; margin-top: 4rem; }
+.step-item { padding-top: 1.5rem; border-top: 1px solid color-mix(in oklab, var(--hero-foreground) 20%, transparent); }
+.step-number { display: inline-flex; height: 2.1rem; width: 2.1rem; align-items: center; justify-content: center; border-radius: 999px; background: var(--accent); color: var(--accent-foreground); font-size: .8rem; font-weight: 800; }
+.step-item h3 { margin: 1rem 0 0; font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+.step-item p { margin: .5rem 0 0; color: var(--hero-muted); font-size: .82rem; line-height: 1.7; }
+.steps-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 4rem; padding: 1.75rem; border: 1px solid color-mix(in oklab, var(--hero-foreground) 16%, transparent); border-radius: var(--radius-lg); background: color-mix(in oklab, var(--hero-foreground) 5%, transparent); }
+.steps-cta p { margin: 0; max-width: 32rem; color: var(--hero-foreground); font-size: .95rem; line-height: 1.6; }
+
+/* ── faq ───────────────────────────────────────────────────────────────── */
+.location-section { padding: 8rem 0; background: var(--background); }
+.location-section p { line-height: 1.9; }
+.faq-list { display: grid; gap: .75rem; align-content: start; }
+.faq-item { border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--card); }
+.faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 1.35rem; cursor: pointer; font-weight: 600; font-size: .95rem; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary svg { color: var(--accent-strong); transition: transform .2s ease; }
+.faq-item[open] summary svg { transform: rotate(180deg); }
+.faq-item p { margin: 0; padding: 0 1.35rem 1.35rem; color: var(--muted-foreground); font-size: .88rem; line-height: 1.75; }
+
+/* ── contato ───────────────────────────────────────────────────────────── */
+.booking-section { padding: 7rem 0; background: var(--hero); color: var(--hero-foreground); }
+.booking-intro h2 { font-family: var(--font-display); font-size: clamp(2.15rem, 4.6vw, 4rem); line-height: 1.04; font-weight: 500; }
+.booking-intro p { max-width: 28rem; margin-top: 1.5rem; color: var(--hero-muted); line-height: 1.8; }
+.booking-list { display: grid; gap: .8rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+.booking-list li { display: flex; align-items: center; gap: .65rem; color: var(--hero-foreground); font-size: .88rem; }
+.booking-form { display: grid; align-content: center; padding: 2rem; border: 1px solid color-mix(in oklab, var(--hero-foreground) 16%, transparent); background: color-mix(in oklab, var(--hero-foreground) 5%, transparent); }
+.booking-form label { margin: 0 0 .5rem; color: var(--hero-muted); font-size: .7rem; font-weight: 700; text-transform: uppercase; }
+.booking-form input, .booking-form select { width: 100%; margin-bottom: 1.5rem; border: 0; border-bottom: 1px solid color-mix(in oklab, var(--hero-foreground) 26%, transparent); outline: none; background: transparent; padding: .65rem 0 1rem; color: var(--hero-foreground); border-radius: 0; }
+.booking-form input::placeholder { color: color-mix(in oklab, var(--hero-muted) 60%, transparent); }
+.booking-form select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--accent) 50%), linear-gradient(135deg, var(--accent) 50%, transparent 50%); background-position: calc(100% - 14px) 45%, calc(100% - 9px) 45%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+.booking-form select option { color: var(--foreground); background: var(--background); }
+.booking-form input:focus, .booking-form select:focus { border-color: var(--accent); }
+
+/* ── footer ────────────────────────────────────────────────────────────── */
+.footer { background: var(--hero); color: var(--hero-muted); border-top: 1px solid color-mix(in oklab, var(--hero-foreground) 10%, transparent); }
+.footer p { margin: 0; text-align: center; font-size: .68rem; }
+.footer-social { display: flex; width: 2.65rem; height: 2.65rem; align-items: center; justify-content: center; border: 1px solid color-mix(in oklab, var(--hero-foreground) 20%, transparent); border-radius: 999px; color: var(--hero-foreground); }
+.floating-whatsapp { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 60; display: flex; width: 3.65rem; height: 3.65rem; align-items: center; justify-content: center; border-radius: 999px; background: var(--whatsapp); color: var(--whatsapp-foreground); box-shadow: 0 14px 28px color-mix(in oklab, var(--whatsapp) 34%, transparent); transition: transform .2s ease; }
+.floating-whatsapp:hover { transform: translateY(-3px) scale(1.03); }
+
+@media (max-width: 1023px) {
+  .reasons-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  .section-shell, .location-section, .booking-section { padding: 5rem 0; }
+  .hours-section .mx-auto { padding-top: 5rem; padding-bottom: 5rem; }
+  .section-heading { display: block; margin-bottom: 2.25rem; }
+  .section-heading > p { margin-top: 1.25rem; }
+  .reasons-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { min-height: 16rem; }
+  .steps-grid { grid-template-columns: 1fr; margin-top: 2.5rem; }
+  .steps-cta { margin-top: 2.5rem; padding: 1.25rem; }
+  .steps-cta .button { width: 100%; }
+  .hero-panel { padding: 1.5rem 1.25rem; }
+  .booking-form { padding: 1.5rem 1.15rem; }
+  .faq-item summary { padding: 1rem 1.1rem; font-size: .88rem; }
+  .faq-item p { padding: 0 1.1rem 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

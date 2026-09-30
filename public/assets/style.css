@@ -1,0 +1,259 @@
+/* Kihon Hair — landing pages stylesheet */
+
+:root {
+  --green: #3cb54a;
+  --green-dark: #2e9a3d;
+  --brown: #241209;
+  --brown-soft: #2e1a10;
+  --tan: #ddc3a3;
+  --tan-light: #e6d3ba;
+  --cream: #f4ead9;
+  --text-on-tan: #2e1a10;
+  --gray: #6b5b4d;
+  --radius: 6px;
+  --font: 'Poppins', 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text-on-tan);
+  background: var(--tan);
+  line-height: 1.5;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background .2s ease, transform .15s ease;
+}
+.btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+.btn::after { content: '↗'; font-size: 14px; }
+
+/* Header / Hero — dividido: texto à esquerda (fundo marrom), foto à direita */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  background: var(--brown);
+  color: #fff;
+  overflow: hidden;
+}
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 40px 60px 6vw;
+}
+.hero__logo { width: 130px; margin: 0 0 26px; }
+.hero__eyebrow {
+  font-size: 14px;
+  letter-spacing: .01em;
+  color: #d8c6b6;
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+.hero__title {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 4px;
+  max-width: 480px;
+}
+.hero__subtitle {
+  font-size: 16px;
+  color: #d8c6b6;
+  margin: 0 0 22px;
+  font-weight: 400;
+}
+.hero__content .btn { align-self: flex-start; }
+.hero__photo {
+  position: relative;
+  min-height: 340px;
+}
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero__content { padding: 44px 24px; text-align: left; }
+  .hero__photo { min-height: 260px; order: -1; }
+}
+
+/* Gallery strip */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  background: var(--tan);
+  padding-top: 4px;
+}
+.gallery img { width: 100%; height: 180px; object-fit: cover; }
+@media (max-width: 700px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .gallery img { height: 140px; }
+}
+
+/* Section headings */
+.section { padding: 56px 0; background: var(--tan); }
+.section--dark { background: var(--brown); color: #fff; }
+.section__title {
+  text-align: center;
+  font-size: clamp(22px, 3.4vw, 28px);
+  font-weight: 700;
+  margin: 0 0 36px;
+  color: var(--text-on-tan);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.section--dark .section__title { color: #fff; text-transform: none; }
+
+/* Services grid */
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) { .services { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
+
+.card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(36,18,9,.18);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.card img { width: 100%; height: 230px; object-fit: cover; }
+.card__body {
+  background: var(--brown);
+  padding: 18px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+.card__title { font-size: 15px; font-weight: 600; margin: 0; color: #fff; }
+.card .btn { margin-top: auto; }
+
+/* Why choose us — texto sobre a foto */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.why-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 16 / 8.5;
+}
+.why-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } }
+
+/* Hours — dividido: horários à esquerda, foto à direita */
+.hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  background: var(--brown);
+  color: #fff;
+}
+.hours__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 40px;
+}
+.hours__content .section__title { text-align: left; margin-bottom: 22px; color: #fff; text-transform: none; }
+.hours table { border-collapse: collapse; margin-bottom: 26px; }
+.hours td { padding: 5px 0; font-size: 15px; color: #f1e6d8; }
+.hours td:first-child { font-weight: 600; padding-right: 18px; }
+.hours__content .btn { align-self: flex-start; }
+.hours__photo { position: relative; min-height: 320px; }
+.hours__photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+@media (max-width: 800px) {
+  .hours { grid-template-columns: 1fr; }
+  .hours__content { padding: 44px 24px; }
+  .hours__photo { min-height: 220px; }
+}
+
+/* Map / location */
+.location {
+  padding: 56px 0;
+  text-align: center;
+  background: var(--brown);
+  color: #fff;
+}
+.location .section__title { color: #fff; text-transform: none; }
+.location address {
+  font-style: normal;
+  font-size: 16px;
+  margin: 0 0 26px;
+  color: #d8c6b6;
+}
+.location iframe {
+  width: 100%;
+  height: 360px;
+  border: 0;
+  border-radius: var(--radius);
+  margin-bottom: 26px;
+  filter: grayscale(.2);
+}
+
+/* Contact */
+.contact {
+  background: var(--tan);
+  padding: 56px 0 64px;
+  text-align: center;
+}
+.contact p { max-width: 500px; margin: 0 auto 26px; color: var(--gray); }
+
+/* Footer */
+.site-footer {
+  background: var(--brown);
+  color: #d8c6b6;
+  text-align: center;
+  padding: 22px 20px;
+  font-size: 13px;
+}
+.site-footer a { color: var(--green); }
